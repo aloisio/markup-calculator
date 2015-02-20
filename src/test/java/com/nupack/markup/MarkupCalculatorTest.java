@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.nupack.model.Book;
 import com.nupack.model.Drug;
+import com.nupack.model.Electronics;
 import com.nupack.model.Food;
 import com.nupack.model.ItemType;
 import com.nupack.model.Money;
