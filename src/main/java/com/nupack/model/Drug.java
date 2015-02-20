@@ -4,9 +4,10 @@ import java.math.BigDecimal;
 
 public class Drug implements ItemType {
 
+    private static final BigDecimal DEFAULT_DRUG_MARKUP = BigDecimal.valueOf(7.5);
+
     @Override
     public BigDecimal getMarkup() {
-        return BigDecimal.valueOf(7.5);
+        return DEFAULT_DRUG_MARKUP;
     }
-
 }

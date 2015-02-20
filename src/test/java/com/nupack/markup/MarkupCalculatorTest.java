@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
+import com.nupack.model.Book;
 import com.nupack.model.Drug;
 import com.nupack.model.Food;
 import com.nupack.model.ItemType;
@@ -51,5 +52,11 @@ public class MarkupCalculatorTest {
     public void should_compute_cost_for_pharmaceutical_projects() {
         Money cost = calculator.calculateFinalCost(new Money(5432.00), 1, new Drug());
         assertMoneyEqualsUpToCents(new Money(6199.81), cost);
+    }
+
+    @Test
+    public void should_compute_cost_for_book_projects() {
+        Money cost = calculator.calculateFinalCost(new Money(12456.95), 4, new Book());
+        assertMoneyEqualsUpToCents(new Money(13707.63), cost);
     }
 }
