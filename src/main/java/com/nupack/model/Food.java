@@ -4,8 +4,10 @@ import java.math.BigDecimal;
 
 public class Food implements ItemType {
 
+    private static final BigDecimal DEFAULT_FOOD_MARKUP = BigDecimal.valueOf(13);
+
     @Override
     public BigDecimal getMarkup() {
-        return BigDecimal.valueOf(13);
+        return DEFAULT_FOOD_MARKUP;
     }
 }
