@@ -32,4 +32,10 @@ public class MarkupCalculatorTest {
         Money cost = calculator.calculateFinalCost(new Money(201.58), 0, ZERO_MARKUP_ITEM);
         assertEquals(new Money(211.66).getCents(), cost.getCents());
     }
+    
+    @Test
+    public void should_return_base_price_with_default_flat_markup_plus_default_person_markup_for_project_with_one_person_and_0_markup_item() {
+        Money cost = calculator.calculateFinalCost(new Money(1327.49), 1, ZERO_MARKUP_ITEM);
+        assertEquals(new Money(1410.59).getCents(), cost.getCents());
+    }
 }

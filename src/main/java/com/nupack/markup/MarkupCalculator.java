@@ -26,6 +26,6 @@ public class MarkupCalculator {
     }
 
     public Money calculateFinalCost(Money basePrice, int numberOfPeople, ItemType itemType) {
-        return basePrice.addPercent(flatMarkup);
+        return basePrice.addPercent(flatMarkup).addPercent(BigDecimal.valueOf(1.2).multiply(BigDecimal.valueOf(numberOfPeople)));
     }
 }
