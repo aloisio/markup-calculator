@@ -59,4 +59,10 @@ public class MarkupCalculatorTest {
         Money cost = calculator.calculateFinalCost(new Money(12456.95), 4, new Book());
         assertMoneyEqualsUpToCents(new Money(13707.63), cost);
     }
+
+    @Test
+    public void should_compute_cost_for_electronics_projects() {
+        Money cost = calculator.calculateFinalCost(new Money(200458.18), 18, new Electronics());
+        assertMoneyEqualsUpToCents(new Money(260154.63), cost);
+    }
 }
