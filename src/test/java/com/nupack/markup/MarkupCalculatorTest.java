@@ -4,6 +4,7 @@ import static com.nupack.model.CommonItemTypes.BOOKS;
 import static com.nupack.model.CommonItemTypes.DRUGS;
 import static com.nupack.model.CommonItemTypes.ELECTRONICS;
 import static com.nupack.model.CommonItemTypes.FOOD;
+import static com.nupack.model.CommonItemTypes.OTHER;
 import static com.nupack.model.MoneyTest.assertMoneyEqualsUpToCents;
 
 import java.math.BigDecimal;
@@ -65,5 +66,11 @@ public class MarkupCalculatorTest {
     public void should_compute_cost_for_electronics_projects() {
         Money cost = calculator.calculateFinalCost(new Money(200458.18), 18, ELECTRONICS);
         assertMoneyEqualsUpToCents(new Money(260154.63), cost);
+    }
+
+    @Test
+    public void should_compute_cost_for_other_projects() {
+        Money cost = calculator.calculateFinalCost(new Money(555.55), 100, OTHER);
+        assertMoneyEqualsUpToCents(new Money(1283.32), cost);
     }
 }
