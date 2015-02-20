@@ -1,6 +1,6 @@
 package com.nupack.markup;
 
-import static org.junit.Assert.assertEquals;
+import static com.nupack.model.MoneyTest.assertMoneyEqualsUpToCents;
 
 import java.math.BigDecimal;
 
@@ -17,25 +17,25 @@ public class MarkupCalculatorTest {
             return BigDecimal.ZERO;
         }
     };
-    
+
     private MarkupCalculator calculator = new MarkupCalculator();
 
     @Test
     public void should_return_base_price_for_a_0_person_project_with_0_percent_flat_markup_and_0_markup_item() {
         calculator = new MarkupCalculator(BigDecimal.ZERO);
         Money cost = calculator.calculateFinalCost(new Money(123.45), 0, ZERO_MARKUP_ITEM);
-        assertEquals(new Money(123.45).getCents(), cost.getCents());
+        assertMoneyEqualsUpToCents(new Money(123.45), cost);
     }
-    
+
     @Test
     public void should_return_base_price_with_default_flat_markup_for_a_0_person_project_with_default_flat_markup_and_0_markup_item() {
         Money cost = calculator.calculateFinalCost(new Money(201.58), 0, ZERO_MARKUP_ITEM);
-        assertEquals(new Money(211.66).getCents(), cost.getCents());
+        assertMoneyEqualsUpToCents(new Money(211.66), cost);
     }
-    
+
     @Test
     public void should_return_base_price_with_default_flat_markup_plus_default_person_markup_for_project_with_one_person_and_0_markup_item() {
         Money cost = calculator.calculateFinalCost(new Money(1327.49), 1, ZERO_MARKUP_ITEM);
-        assertEquals(new Money(1410.59).getCents(), cost.getCents());
+        assertMoneyEqualsUpToCents(new Money(1410.59), cost);
     }
 }

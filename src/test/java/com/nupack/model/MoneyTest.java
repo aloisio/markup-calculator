@@ -6,8 +6,6 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import com.nupack.model.Money;
-
 public class MoneyTest {
     @Test
     public void should_provide_cents_method() {
@@ -16,6 +14,10 @@ public class MoneyTest {
     
     @Test
     public void should_add_percentage_to_amount() {
-        assertEquals(new Money(1296.29).getCents(), new Money(1234.56).addPercent(BigDecimal.valueOf(5)).getCents());
+        assertMoneyEqualsUpToCents(new Money(1296.29), new Money(1234.56).addPercent(BigDecimal.valueOf(5)));
+    }
+
+    public static void assertMoneyEqualsUpToCents(Money expected, Money actual) {
+        assertEquals(expected.getCents(), actual.getCents());
     }
 }

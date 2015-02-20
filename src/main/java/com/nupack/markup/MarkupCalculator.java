@@ -9,6 +9,8 @@ public class MarkupCalculator {
 
     private static final BigDecimal DEFAULT_FLAT_MARKUP = BigDecimal.valueOf(5);
 
+    private static final BigDecimal PERSON_MARKUP = BigDecimal.valueOf(1.2);
+
     private final BigDecimal flatMarkup;
 
     public MarkupCalculator() {
@@ -26,6 +28,10 @@ public class MarkupCalculator {
     }
 
     public Money calculateFinalCost(Money basePrice, int numberOfPeople, ItemType itemType) {
-        return basePrice.addPercent(flatMarkup).addPercent(BigDecimal.valueOf(1.2).multiply(BigDecimal.valueOf(numberOfPeople)));
+        return basePrice.addPercent(flatMarkup).addPercent(getPeopleMarkup(numberOfPeople));
+    }
+
+    private BigDecimal getPeopleMarkup(int numberOfPeople) {
+        return PERSON_MARKUP.multiply(BigDecimal.valueOf(numberOfPeople));
     }
 }
