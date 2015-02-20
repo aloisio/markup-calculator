@@ -1,15 +1,15 @@
 package com.nupack.markup;
 
+import static com.nupack.model.CommonItemTypes.BOOKS;
+import static com.nupack.model.CommonItemTypes.DRUGS;
+import static com.nupack.model.CommonItemTypes.ELECTRONICS;
+import static com.nupack.model.CommonItemTypes.FOOD;
 import static com.nupack.model.MoneyTest.assertMoneyEqualsUpToCents;
 
 import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import com.nupack.model.Book;
-import com.nupack.model.Drug;
-import com.nupack.model.Electronics;
-import com.nupack.model.Food;
 import com.nupack.model.ItemType;
 import com.nupack.model.Money;
 
@@ -42,28 +42,28 @@ public class MarkupCalculatorTest {
         Money cost = calculator.calculateFinalCost(new Money(1327.49), 1, ZERO_MARKUP_ITEM);
         assertMoneyEqualsUpToCents(new Money(1410.59), cost);
     }
-    
+
     @Test
     public void should_compute_cost_for_food_projects() {
-        Money cost = calculator.calculateFinalCost(new Money(1299.99), 3, new Food());
+        Money cost = calculator.calculateFinalCost(new Money(1299.99), 3, FOOD);
         assertMoneyEqualsUpToCents(new Money(1591.58), cost);
     }
-    
+
     @Test
     public void should_compute_cost_for_pharmaceutical_projects() {
-        Money cost = calculator.calculateFinalCost(new Money(5432.00), 1, new Drug());
+        Money cost = calculator.calculateFinalCost(new Money(5432.00), 1, DRUGS);
         assertMoneyEqualsUpToCents(new Money(6199.81), cost);
     }
 
     @Test
     public void should_compute_cost_for_book_projects() {
-        Money cost = calculator.calculateFinalCost(new Money(12456.95), 4, new Book());
+        Money cost = calculator.calculateFinalCost(new Money(12456.95), 4, BOOKS);
         assertMoneyEqualsUpToCents(new Money(13707.63), cost);
     }
 
     @Test
     public void should_compute_cost_for_electronics_projects() {
-        Money cost = calculator.calculateFinalCost(new Money(200458.18), 18, new Electronics());
+        Money cost = calculator.calculateFinalCost(new Money(200458.18), 18, ELECTRONICS);
         assertMoneyEqualsUpToCents(new Money(260154.63), cost);
     }
 }
