@@ -7,10 +7,12 @@ import com.nupack.model.Money;
 
 public class MarkupCalculator {
 
+    private static final BigDecimal DEFAULT_FLAT_MARKUP = BigDecimal.valueOf(5);
+
     private final BigDecimal flatMarkup;
-    
+
     public MarkupCalculator() {
-        this(BigDecimal.valueOf(5));
+        this(DEFAULT_FLAT_MARKUP);
     }
 
     /**

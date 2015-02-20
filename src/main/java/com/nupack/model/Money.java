@@ -8,7 +8,7 @@ public class Money {
     private final BigDecimal amount;
 
     public Money(double amountAsDouble) {
-        this.amount = BigDecimal.valueOf(amountAsDouble);
+        this(BigDecimal.valueOf(amountAsDouble));
     }
 
     public Money(BigDecimal amount) {
@@ -23,7 +23,7 @@ public class Money {
      * @return the Money value increased.
      */
     public Money addPercent(BigDecimal rate) {
-        return new Money(amount.multiply(BigDecimal.ONE.add(rate.divide(ONE_HUNDRED))));
+        return new Money(amount.multiply(multiplicandForRate(rate)));
     }
 
     public long getCents() {
@@ -32,5 +32,9 @@ public class Money {
 
     private long roundToLong(BigDecimal value) {
         return value.setScale(0, BigDecimal.ROUND_HALF_UP).longValue();
+    }
+
+    private BigDecimal multiplicandForRate(BigDecimal rate) {
+        return BigDecimal.ONE.add(rate.divide(ONE_HUNDRED));
     }
 }
